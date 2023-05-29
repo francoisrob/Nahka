@@ -1,6 +1,9 @@
 <?php
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
-$dotenv->load();
+try {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
+    $dotenv->load();
+} catch (Exception $e) {
+}
 define('SITE_NAME', 'Nahka');
 define('APP_ROOT', dirname(dirname(__FILE__)) . '/');
 
