@@ -7,7 +7,7 @@
     <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 500 500"
-            width="500"
+            max-width="50vw"
     >
         <g id="freepik--Floor--inject-17">
             <ellipse id="freepik--floor--inject-17" cx="250" cy="346.54" rx="222.67" ry="128.63"

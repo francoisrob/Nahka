@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="utf-8">
     <title>Nahka - Leather</title>
@@ -22,6 +23,9 @@
     <meta name="twitter:image" content="https://nahka.fra1.cdn.digitaloceanspaces.com/ogimage.png">
     <meta name="author" content="Francois Robbertze">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
     <script>0</script>
 </head>
 <?php

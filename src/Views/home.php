@@ -1,8 +1,10 @@
-<section class="content">
-	<h1>Homepage</h1>
-	<p>
+<div class="head">
+	<h1 class="headertext">NAHKA</h1>
+	<!-- <p>
 		<a href="<?php echo $routeToProduct ?>">Check the first product</a>
-	</p>
+	</p> -->
+</div>
+<section class="content">
 	<?php
 	if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
 		$db = new \App\Models\Database();
