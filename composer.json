@@ -1,0 +1,28 @@
+{
+  "name": "francois/simple-mvc-php-framework",
+  "description": "E-Commerce site for Nahka",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Francois Robbertze",
+      "email": "francoisdprob@gmail.com"
+    }
+  ],
+  "scripts": {
+    "dev": [
+      "Composer\\Config::disableProcessTimeout",
+      "php -S localhost:8000 -t public"
+    ]
+  },
+  "require": {
+    "symfony/routing": "^6.2",
+    "symfony/http-foundation": "^6.2",
+    "vlucas/phpdotenv": "^5.5"
+  }
+}
