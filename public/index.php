@@ -12,6 +12,7 @@ require_once __DIR__ . '/../src/config/config.php';
     <link rel="icon" href="/Assets/favicon.svg" type="image/svg+xml">
     <title>Nahka</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script>0</script>
 </head>
 <?php
 session_start();
