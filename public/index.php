@@ -9,14 +9,18 @@ require_once __DIR__ . '/../src/config/config.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Discover a world of exquisite craftsmanship and timeless style at Nahka. We offer a wide range of premium leather products, handcrafted with precision and passion. From luxurious bags and wallets to stylish accessories, our collection is curated to elevate your everyday style. Experience the unmatched elegance of genuine leather that combines durability with unmatched sophistication. Shop now and indulge in the art of leather craftsmanship.">
-    <meta name="author" content="Francois Robbertze">
-    <link rel="icon" href="/Assets/favicon.svg" type="image/svg+xml">
-    <meta property="og:title" content="Nahka - Finest Leather Products">
+    <meta property="og:url" content="https://nahka.studio/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nahka - Leather">
     <meta property="og:description" content="Discover a world of exquisite craftsmanship and timeless style at Nahka. We offer a wide range of premium leather products, handcrafted with precision and passion. From luxurious bags and wallets to stylish accessories, our collection is curated to elevate your everyday style. Experience the unmatched elegance of genuine leather that combines durability with unmatched sophistication. Shop now and indulge in the art of leather craftsmanship.">
-    <meta property="og:image" content="/Assets/nahka_border.svg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://www.nahka.com">
+    <meta property="og:image" content="https://nahka.studio/Assets/ogimage.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="nahka.studio">
+    <meta property="twitter:url" content="https://nahka.studio/">
+    <meta name="twitter:title" content="Nahka - Leather">
+    <meta name="twitter:description" content="Discover a world of exquisite craftsmanship and timeless style at Nahka. We offer a wide range of premium leather products, handcrafted with precision and passion. From luxurious bags and wallets to stylish accessories, our collection is curated to elevate your everyday style. Experience the unmatched elegance of genuine leather that combines durability with unmatched sophistication. Shop now and indulge in the art of leather craftsmanship.">
+    <meta name="twitter:image" content="https://nahka.studio/Assets/ogimage.png">
+    <meta name="author" content="Francois Robbertze">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <?php
