@@ -3,28 +3,27 @@
 	<p>
 		<a href="<?php echo $routeToProduct ?>">Check the first product</a>
 	</p>
-
 	<?php
-	// if logged in show products from databse neatly with inline css
-	// if (isset($_SESSION["user_id"]))
-	// {	
-	// 	$db = new \App\Models\Database();
-	// 	$db->query('SELECT * FROM products');
-	// 	$products = $db->resultSet();
-
-	// 	echo "<div style='display: flex; flex-wrap: wrap;'>";
-	// 	foreach ($products as $product)
-	// 	{
-	// 		echo "<div style='border: 1px solid black; padding: 10px; margin: 10px;'>";
-	// 		echo "<h3>" . $product["name"] . "</h3>";
-	// 		echo "<p>" . $product["description"] . "</p>";
-	// 		echo "<p>" . $product["price"] . "</p>";
-	// 		echo "<a href='cart/add/" . $product["id"] . "'>Add to cart</a>";
-	// 		echo "</div>";
-	// 	}
-	// 	echo "</div>";
-	// }
-
-
+	if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
+		$db = new \App\Models\Database();
+		$db->query('SELECT * FROM products');
+		$products = $db->resultSet();
+		?>
+		<h2>Products</h2>
+		<div class="container">
+			<div class="products">
+				<?php
+				foreach ($products as $product) {
+					echo '<div class="product">';
+					echo '<div class="product_image_container">';
+					echo '<img class="product_image" src=' . $product['image'] . '>';
+					echo '</div>';
+					echo '<h3>' . $product['product_name'] . '</h3>';
+					echo '<p>R' . $product['price'] . '</p>';
+					echo '</div>';
+				}
+				echo '</div>';
+				echo '</div>';
+	}
 	?>
 </section>

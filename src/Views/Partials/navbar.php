@@ -1,6 +1,5 @@
 <div class="topnav">
     <?php if (isset($_SESSION['user_id'])): ?>
-        <?php echo '<p>' . $_SESSION['user_name'].'</p>'; ?>
         <a href="<?php echo $routes->get('homepage')->getPath(); ?>">
             Home
         </a>
