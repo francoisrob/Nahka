@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <head>
     <meta charset="utf-8">
     <title>Nahka - Leather</title>
@@ -24,7 +23,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <script>0</script>
 </head>
-<?php require_once __DIR__ . '/../vendor/autoload.php';
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../src/config/config.php';
 session_start();
 ini_set('display_errors', '1');
