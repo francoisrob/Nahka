@@ -22,6 +22,7 @@ require_once __DIR__ . '/../src/config/config.php';
     <meta name="twitter:image" content="https://nahka.studio/Assets/ogimage.png">
     <meta name="author" content="Francois Robbertze">
     <link rel="stylesheet" href="/css/style.css">
+    <script>0</script>
 </head>
 <?php
 session_start();
