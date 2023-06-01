@@ -1,31 +1,29 @@
 <div class="head">
 	<h1 class="headertext">NAHKA</h1>
-	<!-- <p>
-		<a href="<?php echo $routeToProduct ?>">Check the first product</a>
-	</p> -->
 </div>
 <section class="content">
 	<?php
-	if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
-		$db = new \App\Models\Database();
-		$db->query('SELECT * FROM products');
-		$products = $db->resultSet();
-		?>
-		<h2>Products</h2>
-		<div class="container">
-			<div class="products">
-				<?php
-				foreach ($products as $product) {
-					echo '<div class="product">';
-					echo '<div class="product_image_container">';
-					echo '<img class="product_image" src=' . $product['image'] . '>';
-					echo '</div>';
-					echo '<h3>' . $product['product_name'] . '</h3>';
-					echo '<p>R' . $product['price'] . '</p>';
-					echo '</div>';
-				}
-				echo '</div>';
-				echo '</div>';
-	}
+	$db = new \App\Models\Database();
+	$db->query('SELECT * FROM products');
+	$products = $db->resultSet();
 	?>
+	<div class="container">
+		<h2 style="text-align: center; font-size: 2rem; margin: 0;">Featured Products</h2>
+		<div class="products">
+			<?php foreach ($products as $product) { ?>
+				<a href="<?php echo str_replace('{id}', $product['id'], $routes->get('product')->getPath()) ?>"
+					style="text-decoration: none; color: black;" class="product">
+					<div class="product_image_container">
+						<img class="product_image" src="<?php echo $product['image'] ?>" alt="product image">
+					</div>
+					<h3>
+						<?php echo $product['product_name'] ?>
+					</h3>
+					<p>R
+						<?php echo $product['price'] ?>
+					</p>
+				</a>
+			<?php } ?>
+		</div>
+	</div>
 </section>

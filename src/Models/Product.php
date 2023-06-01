@@ -1,96 +1,97 @@
-<?php 
+<?php
 namespace App\Models;
 
 class Product
 {
 	protected $id;
-	protected $title;
-	protected $description;
+	protected $product_name;
+	protected $product_description;
 	protected $price;
-	protected $sku;
 	protected $image;
-	
-    // GET METHODS
+	protected $created_at;
+
+	public function __construct(int $id = null)
+	{
+		if ($id) {
+			$db = new \App\Models\Database();
+			$db->query('SELECT * FROM products WHERE id = :id');
+			$db->bind(':id', $id);
+			$product = $db->single();
+
+			$this->id = $product['id'];
+			$this->product_name = $product['product_name'];
+			$this->product_description = $product['product_description'];
+			$this->price = $product['price'];
+			$this->image = $product['image'];
+			$this->created_at = $product['created_at'];
+		}
+	}
 	public function getId()
 	{
 		return $this->id;
 	}
-	
-	public function getTitle()
+
+	public function getProduct_name()
 	{
-		return $this->title;
+		return $this->product_name;
 	}
-	
-	public function getDescription()
+
+	public function getProduct_Description()
 	{
-		return $this->description;
+		return $this->product_description;
 	}
-	
+
 	public function getPrice()
 	{
 		return $this->price;
 	}
-	
-	public function getSku()
-	{
-		return $this->sku;
-	}
-	
 	public function getImage()
 	{
 		return $this->image;
 	}
-	
-    // SET METHODS
-    public function setTitle(string $title)
+	public function getCreatedAt()
 	{
-		$this->title = $title;
+		return $this->created_at;
 	}
-	
-	public function setDescription(string $description)
+	public function setProduct_name(string $product_name)
 	{
-		$this->description = $description;
+		$this->product_name = $product_name;
 	}
-	
+
+	public function setDescription(string $product_description)
+	{
+		$this->product_description = $product_description;
+	}
+
 	public function setPrice(string $price)
 	{
 		$this->price = $price;
 	}
-	
-	public function setSku(string $sku)
-	{
-		$this->sku = $sku;
-	}
-	
 	public function setImage(string $image)
 	{
 		$this->image = $image;
 	}
 
-    // CRUD OPERATIONS
-	public function create(array $data)
+	public function create(int $id)
 	{
-		
+		return $this;
 	}
-	
+
 	public function read(int $id)
 	{
-		$this->title = 'My first Product';
-		$this->description = 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum ';
-		$this->price = 2.56;
-		$this->sku = 'MVC-SP-PHP-01';
-		$this->image = 'https://via.placeholder.com/150';
+
+
 
 		return $this;
 	}
-	
+
 	public function update(int $id, array $data)
 	{
-		
+
 	}
-	
+
 	public function delete(int $id)
 	{
-		
+
 	}
 }

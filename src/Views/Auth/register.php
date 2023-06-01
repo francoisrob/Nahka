@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 	if (!isset($error)) {
 		$hashed_password = password_hash($password, '2y');
-
 		$db = new \App\Models\Database();
 		$db->query('INSERT INTO users (name, surname, email, password) VALUES (:name, :surname, :email, :password)');
 		$db->bind(':name', $name);

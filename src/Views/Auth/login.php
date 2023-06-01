@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			if (password_verify($password, $result['password'])) {
 				$_SESSION['user_id'] = $result['id'];
 				$_SESSION['user_name'] = $result['name'];
-				header('Location: '.$routes->get('homepage')->getPath());
+				header('Location: ' . $routes->get('homepage')->getPath());
 				exit;
 			} else {
 				$error = 'Invalid email or password.';
@@ -28,11 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <section class="content">
 	<div class="auth">
-		<?php if (isset($error)): ?>
-			<p>
-				<?php echo $error; ?>
-			</p>
-		<?php endif; ?>
+
 		<form method="post">
 			<h1>Login</h1>
 			<label for="email">Email:</label>
@@ -40,7 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 			<label for="password">Password:</label>
 			<input type="password" name="password" id="password">
-
+			<?php if (isset($error)): ?>
+				<p style="color: red;">
+					<?php echo $error; ?>
+				</p>
+			<?php endif; ?>
 			<button type="submit">Login</button>
 		</form>
 	</div>

@@ -13,10 +13,9 @@ class PageController
 
 		require_once __DIR__ . '/../Views/home.php';
 	}
-	public function cartAction(RouteCollection $routes)
+	public function cartAction(int $id, RouteCollection $routes)
 	{
-		$routeToProduct = str_replace('{id}', 1, $routes->get('product')->getPath());
-
+		
 		require_once __DIR__ . '/../Views/cart.php';
 	}
 	public function registerAction(RouteCollection $routes)
@@ -29,8 +28,7 @@ class PageController
 	}
 	public function productAction(int $id, RouteCollection $routes)
 	{
-		$product = new Product();
-		$product->read($id);
+		$product = new Product($id);
 
 		require_once __DIR__ . '/../Views/product.php';
 	}

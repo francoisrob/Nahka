@@ -9,8 +9,12 @@
         <p>© 2023 Nahka. All rights reserved.</p>
         <p>Terms of Service</p>
         <p>Privacy Policy</p>
-        <a href="https://storyset.com/web"
-            style="text-decoration: none; color: white; font-size: 0.8rem; margin-top: 1rem;">Storyset</a>
+        <p style="margin-bottom: 0;">Resources:</p>
+        <div style="display:flex; flex-direction: column;">
+            <a href="https://wandererhandcrafted.co.za/" style="text-decoration: none; color: white;">Wanderer
+                Handcrafted Leather</a>
+            <a href="https://storyset.com/web" style="text-decoration: none; color: white;">Storyset</a>
+        </div>
     </div>
 </section>
 <?php
