@@ -5,7 +5,7 @@ use Symfony\Component\Routing\RouteCollection;
 
 // Routes system
 $routes = new RouteCollection();
-$routes->add('homepage', new Route('/', array('controller' => 'PageController', 'method' => 'indexAction'), array()));
+$routes->add('homepage', new Route('/', array('controller' => 'PageController', 'method' => 'indexAction')));
 $routes->add('product', new Route('/product/{id}', array('controller' => 'PageController', 'method' => 'productAction'), array('id' => '[0-9]+')));
 $routes->add('cart', new Route('/cart', array('controller' => 'PageController', 'method' => 'cartAction'), array()));
 

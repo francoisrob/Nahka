@@ -4,15 +4,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$surname = $_POST['surname'];
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-	//check if email is valid
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		$error = 'Please enter a valid email.';
 	}
-	//check if email is already in use
-	$db = new \App\Models\Database();
-	$db->query('SELECT * FROM users WHERE email = :email');
-	$db->bind(':email', $email);
-	$result = $db->single();
+	$result = $user->getUserByEmail($email);
 	if ($result) {
 		$error = 'Email already in use.';
 	}
@@ -20,14 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$error = 'Please fill in all fields.';
 	}
 	if (!isset($error)) {
-		$hashed_password = password_hash($password, '2y');
-		$db = new \App\Models\Database();
-		$db->query('INSERT INTO users (name, surname, email, password) VALUES (:name, :surname, :email, :password)');
-		$db->bind(':name', $name);
-		$db->bind(':surname', $surname);
-		$db->bind(':email', $email);
-		$db->bind(':password', $hashed_password);
-		$db->execute();
+		$user->createUser($name, $surname, $email, $password);
 
 		header('Location: login');
 		exit;
@@ -40,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<form method="post">
 			<h1>Register</h1>
 			<?php if (isset($error)): ?>
-				<p class="error">
+				<p style="color: red;">
 					<?php echo $error; ?>
 				</p>
 			<?php endif; ?>

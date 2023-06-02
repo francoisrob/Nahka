@@ -6,20 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if (empty($email) || empty($password)) {
 		$error = 'Please fill in all fields.';
 	} else {
-		$db = new \App\Models\Database();
-		$db->query('SELECT * FROM users WHERE email = :email');
-		$db->bind(':email', $email);
-		$result = $db->single();
-
-		if ($result) {
-			if (password_verify($password, $result['password'])) {
-				$_SESSION['user_id'] = $result['id'];
-				$_SESSION['user_name'] = $result['name'];
-				header('Location: ' . $routes->get('homepage')->getPath());
-				exit;
-			} else {
-				$error = 'Invalid email or password.';
-			}
+		$user->getUserByEmail($email);
+		if ($user->getId() && password_verify($password, $user->getPassword())) {
+			$_SESSION['user'] = serialize($user->getId());
+			header('Location: ' . $routes->get('homepage')->getPath());
+			exit;
 		} else {
 			$error = 'Invalid email or password.';
 		}
@@ -28,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <section class="content">
 	<div class="auth">
-
 		<form method="post">
 			<h1>Login</h1>
 			<label for="email">Email:</label>

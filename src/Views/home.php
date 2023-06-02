@@ -8,7 +8,8 @@
 	$products = $db->resultSet();
 	?>
 	<div class="container">
-		<h2 style="text-align: center; font-size: 2rem; margin: 0;">Featured Products</h2>
+		<h2 style="width: -moz-available;font-size: 2rem; margin: 0; width: fill-width; padding-left: 1vw;">Featured
+			Products</h2>
 		<div class="products">
 			<?php foreach ($products as $product) { ?>
 				<a href="<?php echo str_replace('{id}', $product['id'], $routes->get('product')->getPath()) ?>"

@@ -24,6 +24,8 @@ class Product
 			$this->price = $product['price'];
 			$this->image = $product['image'];
 			$this->created_at = $product['created_at'];
+		} else {
+			$this->id = null;
 		}
 	}
 	public function getId()
@@ -79,19 +81,16 @@ class Product
 
 	public function read(int $id)
 	{
-
-
-
 		return $this;
 	}
 
 	public function update(int $id, array $data)
 	{
-
+		return $this;
 	}
 
 	public function delete(int $id)
 	{
-
+		return $this;
 	}
 }
