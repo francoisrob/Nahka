@@ -17,6 +17,7 @@
                 </p>
                 <button type="submit" onclick="addToCart(<?php echo $product->getId() ?>)">Add to cart</button>
             </div>
+            <div id="cart-message"></div>
         </div>
 </section>
 <script>
@@ -26,15 +27,18 @@
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onload = function () {
             if (this.status == 200) {
-                // alert('Product added to cart');
-                // var response = JSON.parse(this.responseText);
-                // if (response.status == 'success') {
-                //     alert('Product added to cart');
-                // } else {
-                //     alert('Error adding product to cart');
-                // }
+                var message = document.getElementById('cart-message');
+                message.innerHTML = 'Product added to cart!';
+                message.style.color = 'green';
+            } else {
+                var message = document.getElementById('cart-message');
+                message.innerHTML = 'Error adding product to cart!';
+                message.style.color = 'red';
             }
-        }
-        xhttp.send("product_id=" + encodeURIComponent(productId));
+            setTimeout(function () {
+                message.innerHTML = '';
+            }, 3000);
+        };
+        xhttp.send("productId=" + encodeURIComponent(productId));
     }
 </script>

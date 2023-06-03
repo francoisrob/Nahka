@@ -9,6 +9,48 @@ Colour palette colour names:
 #A26769 - Red
 
 */
+.lds-ring {
+  position: absolute;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 5vw;
+  height: 5vw;
+  margin: 17.5vw;
+  border: .5vw solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #0D0D0D transparent transparent transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 body {
   background: linear-gradient(180deg, #d3cbb8 0, #736b53 75%);
   font-family: "Roboto", sans-serif;
@@ -66,14 +108,15 @@ button[type=submit]:hover {
 .topnav {
   background-color: #736b53;
   overflow: hidden;
-  box-shadow: 0 0 .7rem #736b53
+  box-shadow: 0 0 .7rem #736b53;
+  gap: 1rem;
+  padding: .5rem;
 }
 
 .topnav a {
   align-items: center;
   padding: .5rem;
   color: #f2f2f2;
-  margin: 1rem;
   text-decoration: none;
   border-radius: .5rem
 }
@@ -113,12 +156,12 @@ button[type=submit]:hover {
 .products {
   display: grid;
   width: max-content;
-  grid-template-columns: repeat(2, 1fr)
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vw;
 }
 
+
 .product {
-  padding: 1vw;
-  margin: 1vw;
   border-radius: .2rem;
   background-color: #fff;
   box-shadow: 0 0 .7rem #736b53;
@@ -130,7 +173,8 @@ button[type=submit]:hover {
 .product_image_container {
   height: 15rem;
   border-radius: .5rem;
-  overflow: hidden
+  overflow: hidden;
+  position: relative;
 }
 
 .product_image {
@@ -138,7 +182,9 @@ button[type=submit]:hover {
   height: 15rem;
   object-fit: scale-down;
   object-position: center;
-  border: 0
+  border: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .productpage {
@@ -146,7 +192,6 @@ button[type=submit]:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 .7rem #736b53;
 }
@@ -170,8 +215,8 @@ button[type=submit]:hover {
 
 .image_container {
   width: 100%;
-  height: 50vh;
-  border-radius: .5rem;
+  height: 100%;
+  max-height: 30rem;
   overflow: hidden;
   background-color: white;
   display: flex;
@@ -182,6 +227,7 @@ button[type=submit]:hover {
 .productImage {
   width: 100%;
   height: 100%;
+  max-height: 30rem;
   object-fit: scale-down;
 }
 
@@ -228,6 +274,97 @@ form {
   text-shadow: 0 0 .5rem #0d0d0d
 }
 
+
+
+.cartpage {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 .7rem #736b53;
+  min-height: 80vh;
+  width: 80vw;
+}
+
+.cart_items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 70%;
+  padding: .8rem;
+  gap: 1rem;
+}
+
+.cart_description {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: #736B53 .1rem solid;
+}
+
+.image_container {
+  width: 100%;
+  height: 100%;
+  max-height: 30rem;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  max-height: 30rem;
+  object-fit: scale-down;
+}
+
+.cart_actions {
+  flex-grow: 1;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+}
+.checkout_button {
+  width: 60%;
+  padding: 1rem;
+  border-radius: .5rem;
+  background-color: #00c451;
+  color: #fff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-shadow: 0 0 .5rem #0d0d0d;
+  cursor: pointer;
+  border: none;
+}
+
+.checkout_button:hover {
+  background-color: #00a03e;
+}
+
+.clear_button {
+  width: 60%;
+  padding: 0.5rem;
+  border-radius: .5rem;
+  background-color: #A26769;
+  color: #fff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-shadow: 0 0 .5rem #0d0d0d;
+  cursor: pointer;
+  border: none;
+}
+
 @media screen and (min-width:768px) {
   form {
     width: 50vw
@@ -261,10 +398,16 @@ form {
 
   .image_container {
     width: 50%;
-    height: 50vh;
+    height: 100%;
     display: flex;
     align-items: center;
   }
+
+  .lds-ring div {
+    margin: 11.5vw;
+  }
+
+
 
 }
 
@@ -280,5 +423,9 @@ form {
   .product {
     width: 20vw;
     max-width: 25rem
+  }
+
+  .lds-ring div {
+    margin: 7.5vw;
   }
 }

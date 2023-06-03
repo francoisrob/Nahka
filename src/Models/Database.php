@@ -6,20 +6,17 @@ use PDOException;
 
 class Database
 {
-    private $user = DB_USER;
-    private $password = DB_PASS;
-    private $host = DB_HOST;
-    private $port = DB_PORT;
-    private $dbname = DB_NAME;
-    private $ssl = DB_SSL;
-    private $dbh;
-    private $stmt;
-
-    protected $db;
-
+    protected $user = DB_USER;
+    protected $password = DB_PASS;
+    protected $host = DB_HOST;
+    protected $port = DB_PORT;
+    protected $dbname = DB_NAME;
+    protected $ssl = DB_SSL;
+    protected $dbh;
+    protected $stmt;
     public function __construct()
-    {   
-        $dsn= 'mysql:host=' . $this->host . ';port=' . $this->port . ';dbname=' . $this->dbname . ';sslmode=' . $this->ssl;
+    {
+        $dsn = 'mysql:host=' . $this->host . ';port=' . $this->port . ';dbname=' . $this->dbname . ';sslmode=' . $this->ssl;
         $options = [
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -37,7 +34,8 @@ class Database
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function single() {
+    public function single()
+    {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }

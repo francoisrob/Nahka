@@ -1,8 +1,11 @@
 <?php
 namespace App\Models;
 
+use App\Models\Database;
+
 class Product
 {
+	protected $db;
 	protected $id;
 	protected $product_name;
 	protected $product_description;
@@ -10,23 +13,33 @@ class Product
 	protected $image;
 	protected $created_at;
 
-	public function __construct(int $id = null)
+	public function __construct()
 	{
-		if ($id) {
-			$db = new \App\Models\Database();
-			$db->query('SELECT * FROM products WHERE id = :id');
-			$db->bind(':id', $id);
-			$product = $db->single();
-
-			$this->id = $product['id'];
-			$this->product_name = $product['product_name'];
-			$this->product_description = $product['product_description'];
-			$this->price = $product['price'];
-			$this->image = $product['image'];
-			$this->created_at = $product['created_at'];
-		} else {
-			$this->id = null;
+		$this->db = new Database();
+	}
+	public function getProducts()
+	{
+		$this->db->query('SELECT * FROM products');
+		return $this->db->resultSet();
+	}
+	public function getProduct(int $id = null)
+	{
+		if (!$id) {
+			return null;
 		}
+		$this->db->query('SELECT * FROM products WHERE id = :id');
+		$this->db->bind(':id', $id);
+		$product = $this->db->single();
+		if (!$product) {
+			return null;
+		}
+		$this->id = $product['id'];
+		$this->product_name = $product['product_name'];
+		$this->product_description = $product['product_description'];
+		$this->price = $product['price'];
+		$this->image = $product['image'];
+		$this->created_at = $product['created_at'];
+		return $this;
 	}
 	public function getId()
 	{
