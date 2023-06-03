@@ -1,30 +1,33 @@
 <section class="content">
 	<div class="cartpage">
-		<h1 style="padding:1rem; margin:0;">Cart</h1>
-		<div style="display:flex;flex-direction:row;width:100%;flex-grow:1;">
+		<h1 style="padding:1rem; margin:0;text-align:center; width:70%">Cart</h1>
+		<div class="cart_container">
 			<div class="cart_items">
 				<?php if ($cart) {
+					$total = 0;
 					foreach ($cart as $item) {
 						$product = $product->getProduct($item['product_id']);
+						$total += $product->getPrice() * $item['amount'];
 						?>
-						<div
-							style="display: flex; flex-direction: row; width: 100%; border: 1px solid black; background-color:white; border-radius:.5rem; padding:0.2rem">
-							<div style="height: 10rem; width: 10rem; background-color:white; width:30%;">
-								<img style="height: 100%; width: 100%; object-fit: contain;"
+						<div class="cartItem">
+							<div class="cartImage_container">
+								<img style="height: 10rem; width: 100%; object-fit: contain;"
 									src="<?php echo $product->getImage() ?>" alt="">
 							</div>
-							<h2 style="width:50%;">
-								<?php echo $product->getProduct_name() ?>
-							</h2>
-							<div style="width:20%; display:flex; flex-direction:column; justify-content:center;">
-								<p>
-									Price: R
-									<?php echo $product->getPrice() ?>
-								</p>
-								<p>
-									Amount
-									<?php echo $item["amount"] ?>
-								</p>
+							<div class="cartItem_details">
+								<h2 style="flex-grow:1;">
+									<?php echo $product->getProduct_name() ?>
+								</h2>
+								<div style="padding: 1rem;">
+									<p>
+										Price: R
+										<?php echo $product->getPrice() ?>
+									</p>
+									<p>
+										Amount
+										<?php echo $item["amount"] ?>
+									</p>
+								</div>
 							</div>
 						</div>
 					<?php }
@@ -32,20 +35,24 @@
 					Your cart is empty!
 				<?php } ?>
 			</div>
-			<div style="gap:.5rem;" 
-			class="cart_actions">
-				<h2>Actions</h2>
+			<div class="cart_actions">
 				<?php if ($cart) { ?>
+					<h2 style="margin-bottom: 0;">Actions</h2>
+					<p>Total: R
+						<?php echo $total ?>
+					</p>
 					<div id="cart-message"></div>
-					<div style="display: flex; flex-direction: column; width: 100%;align-items:center;gap:.7rem;">
+					<div class="cartActions">
 						<button class="clear_button" onclick="clearCart()">Clear Cart</button>
 						<button class="checkout_button" onclick="checkout()">Checkout</button>
 					</div>
 				<?php } else { ?>
+					<h2 style="margin-bottom: 0;">Actions</h2>
 					<a href="<?= $routes->get('homepage')->getPath() ?>">Continue Shopping</a>
 				<?php } ?>
 			</div>
 		</div>
+	</div>
 	</div>
 </section>
 
@@ -76,4 +83,27 @@
 		};
 		xhr.send(JSON.stringify(items));
 	}
+
+	function clearCart() {
+		const xhr = new XMLHttpRequest();
+		xhr.open('POST', '/cart/clear', true);
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.onload = function () {
+			if (this.status == 200) {
+				var message = document.getElementById('cart-message');
+				message.innerHTML = 'Your cart has been cleared!';
+				message.style.color = 'green';
+				var itemContainer = document.querySelector('.cart_items');
+				itemContainer.innerHTML = 'Your cart is empty!';
+				var actions = document.querySelector('.cart_actions');
+				actions.innerHTML = '<h2 style="margin-bottom: 0;">Actions</h2><a href="/product">Continue Shopping</a>';
+			} else {
+				var message = document.getElementById('cart-message');
+				message.innerHTML = 'There was an error clearing your cart. Please try again later.';
+				message.style.color = 'red';
+			}
+		};
+		xhr.send();
+	}
+
 </script>

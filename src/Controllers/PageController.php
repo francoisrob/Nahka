@@ -18,9 +18,9 @@ class PageController
 	public function cartAction(RouteCollection $routes)
 	{
 		$this->NeedLogin();
-		$cart = new Cart();
+		$CartClass = new Cart();
 		$product = new Product();
-		$cart = $cart->getCart(unserialize($_SESSION['user']));
+		$cart = $CartClass->getCart(unserialize($_SESSION['user']));
 		require_once __DIR__ . '/../Views/cart.php';
 	}
 	public function registerAction(RouteCollection $routes)
@@ -64,14 +64,16 @@ class PageController
 		$productid = (int) $_POST['productId'];
 		$cart = new Cart();
 		$cart->addToCart($userid, $productid, 1);
-		if ($_SESSION['error']) {
-			http_response_code(400);
-			echo json_encode(array('status' => 'error', 'message' => $_SESSION['error']));
-			unset($_SESSION['error']);
-			exit();
-		}
 		http_response_code(200);
 		echo json_encode(array('status' => 'success'));
 	}
-
+	public function clearCart(RouteCollection $routes)
+	{
+		$userid = unserialize($_SESSION['user']);
+		$cart = new Cart();
+		$cart->clearCart($userid);
+		http_response_code(200);
+		echo json_encode(array('status' => 'success'));
+	}
+	
 }
