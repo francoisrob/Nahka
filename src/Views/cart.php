@@ -1,6 +1,6 @@
 <section class="content">
 	<div class="cartpage">
-		<h1 style="padding:1rem; margin:0;text-align:center; width:70%">Cart</h1>
+		<h1 style="padding:1rem; margin:0;text-align:center;">Cart</h1>
 		<div class="cart_container">
 			<div class="cart_items">
 				<?php if ($cart) {
@@ -81,7 +81,7 @@
 				message.style.color = 'red';
 			}
 		};
-		xhr.send(JSON.stringify(items));
+		xhr.send(JSON.stringify(items),1,1);
 	}
 
 	function clearCart() {

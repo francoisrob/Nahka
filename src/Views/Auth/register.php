@@ -1,22 +1,17 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	$name = $_POST['name'];
-	$surname = $_POST['surname'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		$error = 'Please enter a valid email.';
-	}
-	$result = $user->getUserByEmail($email);
-	if ($result) {
-		$error = 'Email already in use.';
-	}
+	$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+	$surname = filter_input(INPUT_POST, 'surname', FILTER_SANITIZE_STRING);
+	$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+	$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 	if (empty($name) || empty($email) || empty($password)) {
 		$error = 'Please fill in all fields.';
-	}
-	if (!isset($error)) {
+	} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		$error = 'Please enter a valid email.';
+	} elseif ($user->getUserByEmail($email)) {
+		$error = 'Email already in use.';
+	} else {
 		$user->createUser($name, $surname, $email, $password);
-
 		header('Location: login');
 		exit;
 	}

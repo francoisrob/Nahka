@@ -39,6 +39,6 @@
                 message.innerHTML = '';
             }, 3000);
         };
-        xhttp.send("productId=" + encodeURIComponent(productId));
+        xhttp.send("productId=" + encodeURIComponent(productId) + "&amount=50");
     }
 </script>

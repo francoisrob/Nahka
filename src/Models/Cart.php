@@ -15,9 +15,7 @@ class Cart
     }
     public function addToCart($userId, $productId, $amount)
     {
-        $haveCart = $this->getProductCart($userId, $productId);
-        var_dump($haveCart);
-        if ($haveCart) {
+        if ($this->getProductCart($userId, $productId)) {
             $this->db->query('UPDATE carts SET amount = :amount WHERE user_id = :user_id AND product_id = :product_id');
             $this->db->bind(':user_id', $userId);
             $this->db->bind(':product_id', $productId);
@@ -38,7 +36,9 @@ class Cart
         $this->db->bind(':user_id', $userId);
         $this->db->bind(':product_id', $productId);
         $result = $this->db->single();
-        $this->amount = $result['amount'];
+        if ($result) {
+            $this->amount = $result['amount'];
+        }
         return $result;
     }
     public function getCart($userId)

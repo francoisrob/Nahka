@@ -1,8 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-
+	$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+	$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 	if (empty($email) || empty($password)) {
 		$error = 'Please fill in all fields.';
 	} else {

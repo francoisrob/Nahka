@@ -1,3 +1,7 @@
+<?php
+include_once "../src/Views/Partials/header.php";
+include_once "../src/Views/Partials/navbar.php";
+?>
 <section class="content">
       <div style="width: 50%; display: flex; justify-content: center;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
@@ -321,3 +325,6 @@
             </svg>
       </div>
 </section>
+<?php
+include_once "../src/Views/Partials/footer.php";
+?>
