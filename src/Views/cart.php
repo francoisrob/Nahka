@@ -1,36 +1,44 @@
+<?php
+function displayCart($item, $product, $cartItems, $count)
+{
+	$product = $cartItems[$count];
+	?>
+	<div class="cartItem">
+		<div class="cartImage_container">
+			<img style="height: 10rem; width: 100%; object-fit: contain;" src="<?php echo $product['image'] ?>" alt="">
+		</div>
+		<div class="cartItem_details">
+			<h3 style="padding:.5rem; margin:0.5rem; flex-grow:1; text-align:left;">
+				<?php echo $product['product_name'] ?>
+			</h3>
+			<div style="padding: .5rem; display: flex; flex-direction:column;text-align:right; justify-content:end;">
+				<p style="margin:0.1rem">
+					<b>Price:</b> R
+					<?php echo $product['price'] ?>
+				</p>
+				<p style="margin:0.1rem">
+					<b>Amount:</b>
+					<?php echo $item["amount"] ?>
+				</p>
+			</div>
+		</div>
+	</div>
+	<hr style="width: 99%; margin: 0;">
+<?php }
+?>
 <section class="content">
 	<div class="cartpage">
 		<h1 style="padding:1rem; margin:0;text-align:center;">Cart</h1>
 		<div class="cart_container">
 			<div class="cart_items">
+				<hr style="width: 99%; margin: 0;">
 				<?php if ($cart) {
+					$count = 0;
 					$total = 0;
 					foreach ($cart as $item) {
-						$product = $product->getProduct($item['product_id']);
-						$total += $product->getPrice() * $item['amount'];
-						?>
-						<div class="cartItem">
-							<div class="cartImage_container">
-								<img style="height: 10rem; width: 100%; object-fit: contain;"
-									src="<?php echo $product->getImage() ?>" alt="">
-							</div>
-							<div class="cartItem_details">
-								<h2 style="flex-grow:1;padding:1rem">
-									<?php echo $product->getProduct_name() ?>
-								</h2>
-								<div style="padding: 1rem;">
-									<p style="text-align: right;">
-										Price: R
-										<?php echo $product->getPrice() ?>
-									</p>
-									<p>
-										Amount
-										<?php echo $item["amount"] ?>
-									</p>
-								</div>
-							</div>
-						</div>
-					<?php }
+						$total += $item['amount'] * $cartItems[$count]['price'];
+						displayCart($item, $product, $cartItems, $count++);
+					}
 				} else { ?>
 					Your cart is empty!
 				<?php } ?>
@@ -38,8 +46,10 @@
 			<div class="cart_actions">
 				<?php if ($cart) { ?>
 					<h2 style="margin-bottom: 0;">Actions</h2>
-					<p>Total: R
-						<?php echo $total ?>
+					<p><b>Total:</b> R
+						<?php
+						echo number_format($total, 2, '.', ',');
+						?>
 					</p>
 					<div id="cart-message"></div>
 					<div class="cartActions">

@@ -52,6 +52,13 @@ class Product
 		return $this->id;
 	}
 
+	public function getProductsByIds($ids = [])
+	{
+		$ids = implode(',', $ids);
+		$this->db->query("SELECT * FROM products WHERE id IN ($ids)");
+		return $this->db->resultSet();
+	}
+
 	public function getProduct_name()
 	{
 		return $this->product_name;

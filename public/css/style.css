@@ -80,7 +80,7 @@ button[type="submit"]:hover {
 .topnav a {
   align-items: center;
   padding: 0.5rem;
-  color: #f2f2f2;
+  color: #fff;
   text-decoration: none;
   border-radius: 0.5rem;
 }
@@ -261,13 +261,6 @@ form {
   justify-content: center;
 }
 
-.head::after {
-  content: "";
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.1);
-}
-
 .headertext {
   color: #f2f2f2;
   font-family: "Source Sans Pro", sans-serif;
@@ -342,11 +335,12 @@ form {
 .cartActions {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   gap: 0.5rem;
   width: 80%;
   padding: 1rem;
+  flex-grow: 1;
 }
 
 .checkout_button,

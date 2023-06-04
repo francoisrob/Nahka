@@ -23,9 +23,9 @@
         content="Discover a world of exquisite craftsmanship and timeless style at Nahka. We offer a wide range of premium leather products, handcrafted with precision and passion. From luxurious bags and wallets to stylish accessories, our collection is curated to elevate your everyday style. Experience the unmatched elegance of genuine leather that combines durability with unmatched sophistication. Shop now and indulge in the art of leather craftsmanship.">
     <meta name="twitter:image" content="https://nahka.fra1.cdn.digitaloceanspaces.com/ogimage.png">
     <meta name="author" content="Francois Robbertze">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet"> -->
     <script>0</script>
 </head>
