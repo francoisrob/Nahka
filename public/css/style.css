@@ -125,9 +125,8 @@ button[type="submit"]:hover {
 
 .product {
   background-color: #fff;
-  box-shadow: 0 0 .3rem #736b53;
+  box-shadow: 0 0 0.3rem #736b53;
   width: 40vw;
-  height: 50vh;
   cursor: pointer;
   text-decoration: none;
   color: black;
@@ -137,6 +136,7 @@ button[type="submit"]:hover {
 
 .product_image_container {
   width: 100%;
+  min-height: 18rem;
   height: 70%;
   display: flex;
   justify-content: center;
