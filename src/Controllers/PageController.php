@@ -15,8 +15,9 @@ class PageController
 	public function indexAction(RouteCollection $routes)
 	{
 		$product = new Product();
+		$featuredProducts = [7,10,12,4];
+		$featuredProducts = $product->getFeaturedProducts($featuredProducts);
 		$products = $product->getProducts();
-
 		include_once "../src/Views/Partials/header.php";
 		include_once "../src/Views/Partials/navbar.php";
 		include_once __DIR__ . '/../Views/home.php';
@@ -29,7 +30,6 @@ class PageController
 		$CartClass = new Cart();
 		$product = new Product();
 		$cart = $CartClass->getCart(unserialize($_SESSION['user']));
-
 		include_once "../src/Views/Partials/header.php";
 		include_once "../src/Views/Partials/navbar.php";
 		include_once __DIR__ . '/../Views/cart.php';
@@ -39,7 +39,6 @@ class PageController
 	public function registerAction(RouteCollection $routes)
 	{
 		$user = new User();
-
 		include_once "../src/Views/Partials/header.php";
 		include_once "../src/Views/Partials/navbar.php";
 		include_once __DIR__ . '/../Views/Auth/register.php';
@@ -49,7 +48,6 @@ class PageController
 	public function loginAction(RouteCollection $routes)
 	{
 		$user = new User();
-
 		include_once "../src/Views/Partials/header.php";
 		include_once "../src/Views/Partials/navbar.php";
 		include_once __DIR__ . '/../Views/Auth/login.php';
@@ -106,7 +104,6 @@ class PageController
 	{
 		$mail = new PHPMailer(true);
 		try {
-			//Server settings
 			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			$mail->isSMTP();
 			$mail->Host = SMTP_HOST;
@@ -115,20 +112,8 @@ class PageController
 			$mail->Password = SMTP_PASSWORD;
 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 			$mail->Port = SMTP_PORT; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-			//Recipients
 			$mail->setFrom(SMTP_FROM, SMTP_FROM_NAME);
 			$mail->addAddress('joe@example.net', 'Joe User');
-			// $mail->addAddress('ellen@example.com');
-			// $mail->addReplyTo('info@example.com', 'Information');
-			// $mail->addCC('cc@example.com');
-			// $mail->addBCC('bcc@example.com');
-
-			//Attachments
-			// $mail->addAttachment('/var/tmp/file.tar.gz');
-			// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');
-
-			//Content
 			$mail->isHTML(true);
 			$mail->Subject = 'Here is the subject';
 			$mail->Body = 'This is the HTML message body <b>in bold!</b>';
@@ -136,12 +121,10 @@ class PageController
 
 			$mail->send();
 			http_response_code(200);
-			// echo json_encode(array('status' => 'success'));
 		} catch (Exception $e) {
 			http_response_code(500);
 			error_log($mail->ErrorInfo);
 			return false;
-			// echo json_encode(array('status' => 'error', 'message' => $mail->ErrorInfo));
 		}
 	}
 }

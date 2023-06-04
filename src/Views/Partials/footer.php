@@ -1,9 +1,4 @@
 <section class="footer">
-    <?php
-    if (isset($_SESSION['error'])) {
-        echo '<div style="color: white; background-color:red;padding:1rem; font-size: 1rem; text-align: center;">' . ($_SESSION['error'] ?? '') . '</div>';
-    }
-    ?>
     <img src="https://nahka.fra1.cdn.digitaloceanspaces.com/full_icon.svg" alt="full icon" height="100vh">
     <div class="footer-text">
         <p>© 2023 Nahka. All rights reserved.</p>
@@ -19,7 +14,7 @@
 </section>
 <?php
 if (isset($_SESSION['error'])) {
-    echo $_SESSION['error'];
+    echo '<div style="color: white; background-color:red;padding:1rem; font-size: 1rem; text-align: center;">' . ($_SESSION['error'] ?? '') . '</div>';
     unset($_SESSION['error']);
 }
 ?>

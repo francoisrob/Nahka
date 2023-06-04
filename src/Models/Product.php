@@ -17,6 +17,12 @@ class Product
 	{
 		$this->db = new Database();
 	}
+	public function getFeaturedProducts($featuredProducts = [])
+	{
+		$featuredProductsIds = implode(',', $featuredProducts);
+		$this->db->query("SELECT * FROM products WHERE id IN ($featuredProductsIds)");
+		return $this->db->resultSet();
+	}
 	public function getProducts()
 	{
 		$this->db->query('SELECT * FROM products');
