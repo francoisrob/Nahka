@@ -15,11 +15,11 @@
 									src="<?php echo $product->getImage() ?>" alt="">
 							</div>
 							<div class="cartItem_details">
-								<h2 style="flex-grow:1;">
+								<h2 style="flex-grow:1;padding:1rem">
 									<?php echo $product->getProduct_name() ?>
 								</h2>
 								<div style="padding: 1rem;">
-									<p>
+									<p style="text-align: right;">
 										Price: R
 										<?php echo $product->getPrice() ?>
 									</p>
@@ -81,7 +81,7 @@
 				message.style.color = 'red';
 			}
 		};
-		xhr.send(JSON.stringify(items),1,1);
+		xhr.send(JSON.stringify(items), 1, 1);
 	}
 
 	function clearCart() {
@@ -96,7 +96,7 @@
 				var itemContainer = document.querySelector('.cart_items');
 				itemContainer.innerHTML = 'Your cart is empty!';
 				var actions = document.querySelector('.cart_actions');
-				actions.innerHTML = '<h2 style="margin-bottom: 0;">Actions</h2><a href="/product">Continue Shopping</a>';
+				actions.innerHTML = '<h2 style="margin-bottom: 0;">Actions</h2><a href="<?= $routes->get('homepage')->getPath() ?>">Continue Shopping</a>';
 			} else {
 				var message = document.getElementById('cart-message');
 				message.innerHTML = 'There was an error clearing your cart. Please try again later.';

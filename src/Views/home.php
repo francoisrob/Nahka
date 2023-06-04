@@ -6,7 +6,7 @@ function displayProduct($product, $routes)
 	$productPrice = $product['price'];
 	$productImage = $product['image'];
 	?>
-	<a href="<?php echo $productLink ?>" style="text-decoration: none; color: black;" class="product">
+	<a href="<?php echo $productLink ?>" class="product">
 		<div class="product_image_container">
 			<div class="lds-ring">
 				<div></div>
@@ -16,12 +16,14 @@ function displayProduct($product, $routes)
 			</div>
 			<img class="product_image" src="<?php echo $productImage ?>">
 		</div>
-		<h3>
-			<?php echo $productName ?>
-		</h3>
-		<p>R
-			<?php echo $productPrice ?>
-		</p>
+		<div class="productDescription">
+			<h3 style="margin:0;">
+				<?php echo $productName ?>
+			</h3 style="text-align:right;">
+			<p style="margin:0; text-align:right;">R
+				<?php echo $productPrice ?>
+			</p>
+		</div>
 	</a>
 	<?php
 }

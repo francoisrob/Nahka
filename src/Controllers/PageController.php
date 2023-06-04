@@ -15,13 +15,13 @@ class PageController
 	public function indexAction(RouteCollection $routes)
 	{
 		$product = new Product();
-		$featuredProducts = [7,10,12,4];
+		$featuredProducts = [7, 10, 12, 4];
 		$featuredProducts = $product->getFeaturedProducts($featuredProducts);
 		$products = $product->getProducts();
-		include_once "../src/Views/Partials/header.php";
-		include_once "../src/Views/Partials/navbar.php";
-		include_once __DIR__ . '/../Views/home.php';
-		include_once "../src/Views/Partials/footer.php";
+		require_once "../src/Views/Partials/header.php";
+		require_once "../src/Views/Partials/navbar.php";
+		require_once __DIR__ . '/../Views/home.php';
+		require_once "../src/Views/Partials/footer.php";
 
 	}
 	public function cartAction(RouteCollection $routes)
@@ -30,28 +30,28 @@ class PageController
 		$CartClass = new Cart();
 		$product = new Product();
 		$cart = $CartClass->getCart(unserialize($_SESSION['user']));
-		include_once "../src/Views/Partials/header.php";
-		include_once "../src/Views/Partials/navbar.php";
-		include_once __DIR__ . '/../Views/cart.php';
-		include_once "../src/Views/Partials/footer.php";
+		require_once "../src/Views/Partials/header.php";
+		require_once "../src/Views/Partials/navbar.php";
+		require_once __DIR__ . '/../Views/cart.php';
+		require_once "../src/Views/Partials/footer.php";
 
 	}
 	public function registerAction(RouteCollection $routes)
 	{
 		$user = new User();
-		include_once "../src/Views/Partials/header.php";
-		include_once "../src/Views/Partials/navbar.php";
-		include_once __DIR__ . '/../Views/Auth/register.php';
-		include_once "../src/Views/Partials/footer.php";
+		require_once "../src/Views/Partials/header.php";
+		require_once "../src/Views/Partials/navbar.php";
+		require_once __DIR__ . '/../Views/Auth/register.php';
+		require_once "../src/Views/Partials/footer.php";
 
 	}
 	public function loginAction(RouteCollection $routes)
 	{
 		$user = new User();
-		include_once "../src/Views/Partials/header.php";
-		include_once "../src/Views/Partials/navbar.php";
-		include_once __DIR__ . '/../Views/Auth/login.php';
-		include_once "../src/Views/Partials/footer.php";
+		require_once "../src/Views/Partials/header.php";
+		require_once "../src/Views/Partials/navbar.php";
+		require_once __DIR__ . '/../Views/Auth/login.php';
+		require_once "../src/Views/Partials/footer.php";
 
 	}
 	public function productAction(int $id, RouteCollection $routes)
@@ -63,10 +63,10 @@ class PageController
 			header('Location: ' . constant('URL_SUBFOLDER') . '/');
 			exit();
 		}
-		include_once "../src/Views/Partials/header.php";
-		include_once "../src/Views/Partials/navbar.php";
-		include_once __DIR__ . '/../Views/product.php';
-		include_once "../src/Views/Partials/footer.php";
+		require_once "../src/Views/Partials/header.php";
+		require_once "../src/Views/Partials/navbar.php";
+		require_once __DIR__ . '/../Views/product.php';
+		require_once "../src/Views/Partials/footer.php";
 	}
 	public function logoutAction(RouteCollection $routes)
 	{
