@@ -30,7 +30,11 @@ class PageController
 		$CartClass = new Cart();
 		$product = new Product();
 		$cart = $CartClass->getCart(unserialize($_SESSION['user']));
-		$cartItems = $product->getProductsByIds(array_column($cart, 'product_id'));
+		if ($cart) {
+			$cartItems = $product->getProductsByIds(array_column($cart, 'product_id'));
+		} else {
+			$cartItems = [];
+		}
 		require_once "../src/Views/Partials/header.php";
 		require_once "../src/Views/Partials/navbar.php";
 		require_once __DIR__ . '/../Views/cart.php';
