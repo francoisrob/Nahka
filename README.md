@@ -122,6 +122,8 @@ To track web traffic and gather statistics for your website, we utilize Digital 
 
 ## 3.12 Appendix
 
+### Local Development
+
 To run the project locally, you need to have [Composer](https://getcomposer.org/) installed. Once you have Composer installed, run the following commands in the project root directory:
 
 ```bash
@@ -131,7 +133,7 @@ composer run-script dev
 
 You also need to have a MySQL database set up and configured in your `.env` file. You can use the `.env.example` file provided as a template.
 
-## Usage
+### Usage
 
 To start the development server, run the following command:
 
