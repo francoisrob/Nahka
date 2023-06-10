@@ -2,6 +2,10 @@
 
 ## 3.1 Introduction
 
+Nahka is a leather products company, and our online platform is dedicated to offering you a seamless and enjoyable shopping experience. Whether you're searching for high-quality bags or stylish accessories, Nahka has got you covered.
+
+In this user manual, you will find step-by-step instructions on how to use our website. We hope that this guide will help you navigate our site with ease and find exactly what you're looking for.
+
 ### 3.1.1 Background
 
 `NAHKA` is an ecommerce website for a client that makes and sells leather products. The project is built with PHP and makes use of no frameworks. The project has an ORM and makes use of OOP principles.
