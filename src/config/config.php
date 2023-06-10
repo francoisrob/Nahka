@@ -29,3 +29,6 @@ define("SMTP_PORT", $_ENV['SMTP_PORT']);
 define("SMTP_ENCRYPTION", $_ENV['SMTP_ENCRYPTION']);
 define("SMTP_FROM", $_ENV['SMTP_FROM']);
 define("SMTP_FROM_NAME", $_ENV['SMTP_FROM_NAME']);
+
+# Featured Products
+define("FEATURED_PRODUCTS", $_ENV['FEATURED_PRODUCTS']);

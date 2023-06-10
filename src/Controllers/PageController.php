@@ -15,7 +15,7 @@ class PageController
 	public function indexAction(RouteCollection $routes)
 	{
 		$product = new Product();
-		$featuredProducts = [7, 10, 12, 4];
+		$featuredProducts = explode(',', FEATURED_PRODUCTS);
 		$featuredProducts = $product->getFeaturedProducts($featuredProducts);
 		$products = $product->getProducts();
 		require_once "../src/Views/Partials/header.php";
@@ -81,7 +81,7 @@ class PageController
 
 	public function NeedLogin()
 	{
-		if (!unserialize($_SESSION['user'])) {
+		if (!isset($_SESSION['user'])) {
 			header('Location: /login');
 			exit();
 		}
