@@ -10,12 +10,14 @@
 
 This website has been developed using advanced technologies to ensure a seamless user experience. The following technologies have been employed in its development:
 
-- `PHP` was used to develop the backend of the website. It is a server-side scripting language that is used to create dynamic web pages.
-- `MySQL` was used to develop the database of the website. It is an open-source relational database management system.
-- `HTML`, `CSS`, and `JavaScript` were used to develop the frontend of the website. HTML is a markup language used to create web pages. CSS is a style sheet language used to describe the presentation of a document written in HTML. JavaScript is a programming language used to create interactive effects within web browsers.
-- `Digital Ocean` Spaces was used to store the images of the products on the website. It is an object storage service that is compatible with the S3 API.
-- `Digital Ocean App Platform` was used to deploy the website. It is a Platform-as-a-Service (PaaS) solution that allows developers to deploy their code directly from a GitHub repository.
-- The Domain was acquired from `Name.com`.
+- PHP was used to develop the backend of the website. It is a server-side scripting language that is used to create dynamic web pages.
+- Composer was used to manage the project's dependencies. It is a dependency manager for PHP.
+- Symfony Routing was used to create the routes for the website. It is a component of the Symfony framework that allows developers to define routes for their applications.
+- MySQL was used to develop the database of the website. It is an open-source relational database management system.
+- HTML, CSS, and JavaScript were used to develop the frontend of the website. HTML is a markup language used to create web pages. CSS is a style sheet language used to describe the presentation of a document written in HTML. JavaScript is a programming language used to create interactive effects within web browsers.
+- Digital Ocean Spaces was used to store the images of the products on the website. It is an object storage service that is compatible with the S3 API.
+- Digital Ocean App Platform was used to deploy the website. It is a Platform-as-a-Service (PaaS) solution that allows developers to deploy their code directly from a GitHub repository.
+- The Domain was acquired from Name.com.
 
 ## 3.2 Basics: Accessing your website and Admin
 
@@ -76,7 +78,6 @@ The front page contains the Featured Products section, which displays the produc
 When a customer places an order on the website, the following actions take place:
 
 - The order details are emailed to the store owner.
-- The order details are stored in the database.
 
 ## 3.9 Updating a page on your site
 
@@ -112,12 +113,30 @@ The website is built using a routing system(or MVC). This means that each page o
 
 ## 3.11 Checking Web Traffic and Statistics
 
-To track web traffic and gather statistics for your website, we utilize tools such as Google Analytics. These tools provide valuable insights into visitor behavior, demographics, and other key metrics.
+To track web traffic and gather statistics for your website, we utilize Digital Ocean App Platform's built-in metrics. To access these metrics, follow these steps:
 
-[Explain the tools used on your website for tracking web traffic and gathering statistics, e.g., Google Analytics.]
+1. Log in to your Digital Ocean account.
+2. Navigate to the App Platform dashboard.
+3. Click on Nahka.
+4. Click on the `Metrics` tab.
 
 ## 3.12 Appendix
 
-Use this section to provide any additional information or instructions on setting up the website.
+To run the project locally, you need to have [Composer](https://getcomposer.org/) installed. Once you have Composer installed, run the following commands in the project root directory:
 
-Note: This user guide is intended as a general reference and may vary based on the specific implementation of the website.
+```bash
+composer install
+composer run-script dev
+```
+
+You also need to have a MySQL database set up and configured in your `.env` file. You can use the `.env.example` file provided as a template.
+
+## Usage
+
+To start the development server, run the following command:
+
+```bash
+php -S localhost:8000 -t public
+```
+
+You can then access the website at `http://localhost:8000`.
