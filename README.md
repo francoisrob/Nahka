@@ -65,7 +65,7 @@ Where 'image' is the name of the image file in the 'images' folder.
 
 ## 3.5 Shipping Options
 
-When the customer places an order, the cart details are emailed to the store owner. The store owner then contacts the customer to confirm the order and arrange for shipping.
+When the customer places an order, the cart details are emailed to the customer.
 
 ## 3.6 The front page: adding and changing images
 
@@ -79,9 +79,7 @@ The front page contains the Featured Products section, which displays the produc
 
 ## 3.8 Orders
 
-When a customer places an order on the website, the following actions take place:
-
-- The order details are emailed to the store owner.
+When a customer places an order on the website, the order details are emailed to the customer.
 
 ## 3.9 Updating a page on your site
 
