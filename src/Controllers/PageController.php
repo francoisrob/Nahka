@@ -81,7 +81,7 @@ class PageController
 
 	public function NeedLogin()
 	{
-		if (!isset($_SESSION['user'])) {
+		if (!unserialize($_SESSION['user'])) {
 			header('Location: /login');
 			exit();
 		}
