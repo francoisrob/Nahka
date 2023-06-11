@@ -19,8 +19,8 @@ class PageController
 		$featuredProducts = $product->getFeaturedProducts($featuredProducts);
 		$products = $product->getProducts();
 		require_once "../src/Views/Partials/header.php";
-		require_once "../src/Views/Partials/navbar.php";
-		require_once __DIR__ . '/../Views/home.php';
+		require "../src/Views/Partials/navbar.php";
+		require __DIR__ . '/../Views/home.php';
 		require_once "../src/Views/Partials/footer.php";
 
 	}
@@ -36,8 +36,8 @@ class PageController
 			$cartItems = [];
 		}
 		require_once "../src/Views/Partials/header.php";
-		require_once "../src/Views/Partials/navbar.php";
-		require_once __DIR__ . '/../Views/cart.php';
+		require "../src/Views/Partials/navbar.php";
+		require __DIR__ . '/../Views/cart.php';
 		require_once "../src/Views/Partials/footer.php";
 
 	}
@@ -45,8 +45,8 @@ class PageController
 	{
 		$user = new User();
 		require_once "../src/Views/Partials/header.php";
-		require_once "../src/Views/Partials/navbar.php";
-		require_once __DIR__ . '/../Views/Auth/register.php';
+		require "../src/Views/Partials/navbar.php";
+		require __DIR__ . '/../Views/Auth/register.php';
 		require_once "../src/Views/Partials/footer.php";
 
 	}
@@ -54,8 +54,8 @@ class PageController
 	{
 		$user = new User();
 		require_once "../src/Views/Partials/header.php";
-		require_once "../src/Views/Partials/navbar.php";
-		require_once __DIR__ . '/../Views/Auth/login.php';
+		require "../src/Views/Partials/navbar.php";
+		require __DIR__ . '/../Views/Auth/login.php';
 		require_once "../src/Views/Partials/footer.php";
 
 	}
@@ -69,8 +69,8 @@ class PageController
 			exit();
 		}
 		require_once "../src/Views/Partials/header.php";
-		require_once "../src/Views/Partials/navbar.php";
-		require_once __DIR__ . '/../Views/product.php';
+		require "../src/Views/Partials/navbar.php";
+		require __DIR__ . '/../Views/product.php';
 		require_once "../src/Views/Partials/footer.php";
 	}
 	public function logoutAction(RouteCollection $routes)
@@ -81,7 +81,6 @@ class PageController
 
 	public function NeedLogin()
 	{
-		error_log('needLogin:' . $_SESSION['user']);
 		if (!isset($_SESSION['user'])) {
 			header('Location: /login');
 			exit();

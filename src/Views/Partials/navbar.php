@@ -1,11 +1,3 @@
-<?php
-try {
-    var_dump($_SESSION);
-    echo "</br>Connection success:". unserialize($_SESSION['user']);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-?>
 <div class="topnav">
     <a href="/">Home</a>
     <?php if (isset($_SESSION['user'])): ?>
