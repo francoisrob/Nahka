@@ -29,9 +29,13 @@ class User
     {
         return $this->surname;
     }
-    public function getEmail()
-    {
-        return $this->email;
+    public function getEmail($id)
+    {   
+        $this->db->query('SELECT email FROM users WHERE id = :id');
+        $this->db->bind(':id', $id);
+        $this->db->execute();
+        $email = $this->db->single();
+        return $email;
     }
     public function getPassword()
     {

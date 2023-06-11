@@ -107,6 +107,14 @@ class PageController
 
 	public function sendMail(RouteCollection $routes)
 	{
+		$items = json_decode(file_get_contents('php://input'), true);
+		ob_start();
+		include __DIR__ . '/../Views/Partials/mailbody.php';
+		$body = ob_get_contents();
+
+		$user = new User();
+		$email = $user->getEmail(unserialize($_SESSION['user']))['email'];
+
 		$mail = new PHPMailer(true);
 		try {
 			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -115,16 +123,22 @@ class PageController
 			$mail->SMTPAuth = true;
 			$mail->Username = SMTP_USERNAME;
 			$mail->Password = SMTP_PASSWORD;
-			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+			$mail->SMTPSecure = SMTP_ENCRYPTION;
 			$mail->Port = SMTP_PORT; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 			$mail->setFrom(SMTP_FROM, SMTP_FROM_NAME);
-			$mail->addAddress('joe@example.net', 'Joe User');
-			$mail->isHTML(true);
-			$mail->Subject = 'Here is the subject';
-			$mail->Body = 'This is the HTML message body <b>in bold!</b>';
-			$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+			$mail->addAddress($email);
 
+			$mail->isHTML(true);
+			$mail->CharSet = 'UTF-8';
+			$mail->Encoding = 'base64';
+
+			$mail->Subject = 'Thank you!';
+			$mail->Body = $body;
+			$mail->AltBody = 'Please use an HTML compatible email client to view this email';
+			$mail->Timeout = 1;
+			echo $mail->send();
 			$mail->send();
+			$this->clearCart($routes);
 			http_response_code(200);
 		} catch (Exception $e) {
 			http_response_code(500);
