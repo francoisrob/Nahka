@@ -90,7 +90,7 @@ class User
     }
     public function createUser($name, $surname, $email, $password)
     {
-        $hashed_password = password_hash($password, '2y'); //PASSWORD_DEFAULT
+        $hashed_password = password_hash($password, '2y');
         $this->db->query('INSERT INTO users (name, surname, email, password) VALUES (:name, :surname, :email, :password)');
         $this->db->bind(':name', $name);
         $this->db->bind(':surname', $surname);

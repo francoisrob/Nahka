@@ -25,7 +25,7 @@ class Database
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->password, $options);
         } catch (PDOException $e) {
-            $_SESSION['error'] = $e->getMessage();
+            error_log($e->getMessage());
         }
     }
 
@@ -55,7 +55,7 @@ class Database
         try {
             return $this->stmt->execute();
         } catch (PDOException $e) {
-            $_SESSION['error'] = $e->getMessage();
+            error_log($e->getMessage());
         }
     }
 

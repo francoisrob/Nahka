@@ -58,7 +58,7 @@ function displayCart($item, $product, $cartItems, $count)
 				</div>
 				<?php } else { ?>
 				<h2 style="margin-bottom: 0;">Actions</h2>
-				<a href="<?= $routes->get('homepage')->getPath() ?>">Continue Shopping</a>
+				<a href='/'>Continue Shopping</a>
 				<?php } ?>
 			</div>
 		</div>
@@ -90,7 +90,7 @@ function displayCart($item, $product, $cartItems, $count)
 				message.style.color = 'green';
 				// reditrect after 3 seconds
 				setTimeout(function () {
-					window.location.href = '<?= $routes->get('homepage')->getPath() ?>';
+					window.location.href = '/';
 				}, 3000);
 			} else {
 				document.querySelector('.checkout_button').disabled = false;
@@ -115,7 +115,7 @@ function displayCart($item, $product, $cartItems, $count)
 				var itemContainer = document.querySelector('.cart_items');
 				itemContainer.innerHTML = 'Your cart is empty!';
 				var actions = document.querySelector('.cart_actions');
-				actions.innerHTML = '<h2 style="margin-bottom: 0;">Actions</h2><a href="<?= $routes->get('homepage')->getPath() ?>">Continue Shopping</a>';
+				actions.innerHTML = '<h2 style="margin-bottom: 0;">Actions</h2><a href="/">Continue Shopping</a>';
 			} else {
 				var message = document.getElementById('cart-message');
 				message.innerHTML = 'There was an error clearing your cart. Please try again later.';

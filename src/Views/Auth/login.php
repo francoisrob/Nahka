@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$user->getUserByEmail($email);
 		if ($user->getId() && password_verify($password, $user->getPassword())) {
 			$_SESSION['user'] = serialize($user->getId());
-			header('Location: ' . $routes->get('homepage')->getPath());
+			header('Location: /');
 			exit;
 		} else {
 			$error = 'Invalid email or password.';

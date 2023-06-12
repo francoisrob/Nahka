@@ -83,6 +83,7 @@ button[type="submit"]:hover {
   color: #fff;
   text-decoration: none;
   border-radius: 0.5rem;
+  font-weight: bold;
 }
 
 .topnav a:hover {
@@ -253,7 +254,7 @@ form {
 }
 
 .head {
-  background-image: url(https://nahka.fra1.cdn.digitaloceanspaces.com/cover.png);
+  background-image: url(https://nahka.fra1.cdn.digitaloceanspaces.com/cover.webp);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

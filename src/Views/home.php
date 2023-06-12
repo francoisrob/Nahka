@@ -1,7 +1,7 @@
 <?php
 function displayProduct($product, $routes)
 {
-	$productLink = str_replace('{id}', $product['id'], $routes->get('product')->getPath());
+	$productLink = str_replace('{id}', $product['id'], '/product/{id}');
 	$productName = $product['product_name'];
 	$productPrice = $product['price'];
 	$productImage = $product['image'];

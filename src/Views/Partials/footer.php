@@ -12,9 +12,3 @@
         </div>
     </div>
 </section>
-<?php
-if (isset($_SESSION['error'])) {
-    echo '<div style="color: white; background-color:red;padding:1rem; font-size: 1rem; text-align: center;">' . ($_SESSION['error'] ?? '') . '</div>';
-    unset($_SESSION['error']);
-}
-?>
